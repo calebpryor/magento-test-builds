@@ -11,6 +11,7 @@ RUN apk update && apk upgrade && \
     oniguruma-dev
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install -j$(nproc) \
+    ext-exif \
     bcmath \
     gd \
     iconv \
