@@ -11,7 +11,6 @@ RUN apk update && apk upgrade && \
     oniguruma-dev
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install -j$(nproc) \
-    ext-exif \
     bcmath \
     gd \
     iconv \
@@ -24,7 +23,9 @@ RUN docker-php-ext-install -j$(nproc) \
     sodium \
     xsl \
     zip \
-    pdo_mysql
+    pdo_mysql \
+    exif
+RUN docker-php-ext-enable exif
 RUN pecl install -o -f redis && docker-php-ext-enable redis
 RUN pecl install -o -f apcu && docker-php-ext-enable apcu
 
