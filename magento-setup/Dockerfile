@@ -19,6 +19,5 @@ RUN bin/magento module:enable -vvv --all && bin/magento -vvv setup:di:compile
 RUN composer dump-autoload --optimize
 RUN bin/magento s:s:d -vvv -f
 RUN bin/magento module:status -vvv
-RUN rm -rf $COMPOSER_HOME /app/dev /app/phpserver  /app/var/* /tmp/*
 EXPOSE 9000
 CMD ["php-fpm", "-R"]
